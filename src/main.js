@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.use(
   "/auth",
   createProxyMiddleware({
-    target: "https://app-api-dev.copan-ti.com/auth",
+    target: "http://localhost:9001/auth",
     changeOrigin: true,
     pathRewrite: { "^/auth": "" },
   })
@@ -28,7 +28,7 @@ app.use(
 app.use(
   "/payments",
   createProxyMiddleware({
-    target: "http://127.0.0.1:8000",
+    target: "http://127.0.0.1:8000/payments",
     changeOrigin: true,
     pathRewrite: { "^/payments": "" },
   })
@@ -37,9 +37,9 @@ app.use(
 app.use(
   "/payment_invoice_records",
   createProxyMiddleware({
-    target: "http://127.0.0.1:8000",
+    target: "http://127.0.0.1:8000/payment_invoice_records",
     changeOrigin: true,
-    pathRewrite: { "^/payments": "" },
+    pathRewrite: { "^/payment_invoice_records": "" },
   })
 );
 

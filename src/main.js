@@ -52,6 +52,24 @@ app.use(
   })
 );
 
+app.use(
+  "/customers",
+  createProxyMiddleware({
+    target: "http://127.0.0.1:8000/customers",
+    changeOrigin: true,
+    pathRewrite: { "^/customers": "" },
+  })
+);
+
+app.use(
+  "/logs",
+  createProxyMiddleware({
+    target: "http://127.0.0.1:8000/logs",
+    changeOrigin: true,
+    pathRewrite: { "^/logs": "" },
+  })
+);
+
 // Inicia el servidor
 app.listen(PORT, () => {
   console.log(`Proxy corriendo en http://localhost:${PORT}`);
